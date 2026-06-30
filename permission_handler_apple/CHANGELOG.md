@@ -1,3 +1,9 @@
+## 9.5.0
+
+* Migrates iOS platform communication from MethodChannel to Pigeon.
+* Adds Dart platform implementation `PermissionHandlerApple` registered via `dartPluginClass`.
+* Removes the legacy iOS MethodChannel handler.
+
 ## 9.4.10
 
 * Fixed Info.plist lookup in Package.swift to auto-apply permissions.

@@ -10,6 +10,16 @@ Since version 9.1.0 of the [permission_handler](https://pub.dev/packages/permiss
 
 More detailed instructions on using the API can be found in the [README.md](../permission_handler/README.md) of the [permission_handler](https://pub.dev/packages/permission_handler) package.
 
+## Development
+
+iOS platform communication uses [Pigeon](https://pub.dev/packages/pigeon). After changing [`pigeon/permission_handler_apple_api.dart`](pigeon/permission_handler_apple_api.dart), regenerate native and Dart bindings from this package directory:
+
+```bash
+dart run pigeon --input pigeon/permission_handler_apple_api.dart
+```
+
+Commit the generated files under `lib/src/pigeon/` and `ios/permission_handler_apple/Sources/permission_handler_apple/pigeon/`.
+
 ## Issues
 
 Please file any issues, bugs, or feature requests as an issue on our [GitHub](https://github.com/Baseflow/flutter-permission-handler/issues) page. Commercial support is available, you can contact us at <hello@baseflow.com>.
