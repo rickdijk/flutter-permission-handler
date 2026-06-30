@@ -181,6 +181,7 @@ let package = Package(
             publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("."),
+                .headerSearchPath("pigeon"),
                 .headerSearchPath("strategies"),
                 .headerSearchPath("util"),
                 .headerSearchPath("include/permission_handler_apple"),
