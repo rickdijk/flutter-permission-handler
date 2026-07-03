@@ -3,6 +3,7 @@
 * Migrates iOS platform communication from MethodChannel to Pigeon.
 * Adds Dart platform implementation `PermissionHandlerApple` registered via `dartPluginClass`.
 * Removes the legacy iOS MethodChannel handler.
+* Increases minimum supported Dart SDK version to 3.3.0 to be compatible with pigeon dependency 
 
 ## 9.4.10
 
