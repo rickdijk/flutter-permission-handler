@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart';
-import 'package:permission_handler_platform_interface/src/method_channel/utils/codec.dart';
 
 import 'src/pigeon/permission_handler_apple_api.g.dart';
 
@@ -20,23 +19,26 @@ class PermissionHandlerApple extends PermissionHandlerPlatform {
   @override
   Future<PermissionStatus> checkPermissionStatus(Permission permission) async {
     final status = await _hostApi.checkPermissionStatus(permission.value);
-    return decodePermissionStatus(status);
+    return PermissionStatusValue.statusByValue(status);
   }
 
   @override
   Future<ServiceStatus> checkServiceStatus(Permission permission) async {
     final status = await _hostApi.checkServiceStatus(permission.value);
-    return decodeServiceStatus(status);
+    return ServiceStatusValue.statusByValue(status);
   }
 
   @override
   Future<Map<Permission, PermissionStatus>> requestPermissions(
     List<Permission> permissions,
   ) async {
-    final data = encodePermissions(permissions);
+    final data = permissions.map((it) => it.value).toList();
     final status = await _hostApi.requestPermissions(data);
-    return decodePermissionRequestResult(
-      status.map((key, value) => MapEntry(key!, value!)),
+    return status.map(
+      (key, value) => MapEntry(
+        Permission.byValue(key!),
+        PermissionStatusValue.statusByValue(value!),
+      ),
     );
   }
 
